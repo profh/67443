@@ -127,26 +127,17 @@
 		E5AA645B271F4EFC00D3C4A8 /* 443App */ = {
 			isa = PBXGroup;
 			children = (
+				E71985082733556600629B73 /* Views */,
+				E71985072733550100629B73 /* Models */,
 				E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */,
-				E5CB3CB9272C563C001936AE /* MemoryPin.swift */,
-				E5CB3CBE272C568B001936AE /* Tag.swift */,
-				E5AA64B02720E08200D3C4A8 /* Location.swift */,
-				E5AA64B52720E0AB00D3C4A8 /* MapView.swift */,
-				E5FDC64B2732C1BC00460D27 /* PinRow.swift */,
-				E5FDC6502732C1E800460D27 /* PinDetail.swift */,
 				E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */,
 				E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */,
-				E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */,
 				E5AA6465271F4F0500D3C4A8 /* Assets.xcassets */,
 				E5AA646A271F4F0500D3C4A8 /* LaunchScreen.storyboard */,
 				E5AA646D271F4F0500D3C4A8 /* Info.plist */,
 				E5AA6462271F4EFC00D3C4A8 /* _43App.xcdatamodeld */,
 				E5AA6467271F4F0500D3C4A8 /* Preview Content */,
 				4A6384C227288D2A00D8EBDF /* ViewModel.swift */,
-				4A4512AD272B252E0092899D /* BottomBar.swift */,
-				E5CB3CD92730D6EF001936AE /* AddPin.swift */,
-				A9688071272C767300F0C51A /* User.swift */,
-				4A79D7202730D4F900C673CE /* Profile.swift */,
 			);
 			path = 443App;
 			sourceTree = "<group>";
@@ -175,6 +166,31 @@
 				E5AA6483271F4F0500D3C4A8 /* Info.plist */,
 			);
 			path = 443AppUITests;
+			sourceTree = "<group>";
+		};
+		E71985072733550100629B73 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5AA64B02720E08200D3C4A8 /* Location.swift */,
+				E5CB3CB9272C563C001936AE /* MemoryPin.swift */,
+				A9688071272C767300F0C51A /* User.swift */,
+				E5CB3CBE272C568B001936AE /* Tag.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E71985082733556600629B73 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5CB3CD92730D6EF001936AE /* AddPin.swift */,
+				4A4512AD272B252E0092899D /* BottomBar.swift */,
+				E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */,
+				E5AA64B52720E0AB00D3C4A8 /* MapView.swift */,
+				E5FDC6502732C1E800460D27 /* PinDetail.swift */,
+				E5FDC64B2732C1BC00460D27 /* PinRow.swift */,
+				4A79D7202730D4F900C673CE /* Profile.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
