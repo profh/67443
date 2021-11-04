@@ -11,7 +11,7 @@ import SwiftUI
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
-  var viewModel: ViewModel
+  var viewModel = ViewModel()
   @ObservedObject var viewController: ViewController
   
   var body: some View
@@ -19,30 +19,32 @@ struct BottomBar: View {
    
     TabView {
       NavigationView {
-        List {
-          ForEach(viewModel.sampleUser.allPins)
-          { pin in
-            NavigationLink(destination: PinDetail(pin: pin))
-            {
-              PinRow(pin: pin)
-            }
-          }
-        }
-        .navigationBarTitle("Pins")
-        .navigationBarItems(trailing:
-          NavigationLink(destination: AddPin(viewModel: viewModel)) {
-              Image(systemName: "plus")
-          }
-        )
-      }.tabItem {
-            Image(systemName: "phone.fill")
-            Text("First Tab")
-          }
+//        List {
+//          ForEach(viewModel.sampleUser.allPins)
+//          { pin in
+//            NavigationLink(destination: PinDetail(pin: pin))
+//            {
+//              PinRow(pin: pin)
+//            }
+//          }
+//        }
+//        .navigationBarTitle("Pins")
+//        .navigationBarItems(trailing:
+//          NavigationLink(destination: AddPin()) {
+//              Image(systemName: "plus")
+//          }
+//        )
+      }
+      .tabItem {
+        Image(systemName: "pin.fill")
+        Text("Pins")
+      }
+      
       
       NavigationView {
         ZStack {
-          MapView(viewController: viewController, viewModel: viewModel)
-          NavigationLink(destination: AddPin(viewModel: viewModel)) {
+          MapView(viewController: viewController)
+          NavigationLink(destination: AddPin()) {
               Text("Create")
           }
           .offset(y: 275)
@@ -57,19 +59,20 @@ struct BottomBar: View {
       
       
            .tabItem {
-              Image(systemName: "tv.fill")
-              Text("Second Tab")
+              Image(systemName: "map.fill")
+              Text("Map")
             }
       
-      Profile(viewModel: viewModel)
+      Profile()
            .tabItem {
-              Image(systemName: "tv.fill")
-              Text("Second Tab")
+              Image(systemName: "person.fill")
+              Text("Profile")
             }
       
       
       
     }
+    .environmentObject(viewModel)
     
     
     

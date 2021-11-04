@@ -11,8 +11,8 @@ import UIKit
 
 struct AddPin: View {
 
-  var viewModel: ViewModel
-  @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+  @EnvironmentObject var viewModel: ViewModel
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
   @State var title: String = "F"
   @State var description: String = "F"
@@ -110,8 +110,9 @@ struct AddPin: View {
         self.viewModel.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tag: tagArr, date: d)
         print("AFTER SAVE COUNT:")
         print(viewModel.sampleUser.allPins.count)
+//      print(viewModel.sampleUser.allPins.last?.title)
         
-        self.mode.wrappedValue.dismiss()
+        self.presentationMode.wrappedValue.dismiss()
         
       })
       {
