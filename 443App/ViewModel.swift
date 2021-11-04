@@ -12,36 +12,28 @@ import SwiftUI
 import UIKit
 import CoreData
 
-//WORKING ON MAKING FUNCTIONS TO SAVE PINS AND SHIT
+//WORKING ON MAKING FUNCTIONS TO SAVE PINS AND SH!T
 
-class ViewModel: ObservableObject{
-  
-  
+class ViewModel: ObservableObject {
   
   @Published var sampleUser = User(name: "Larry Heimann", email: "larry@gmail.com", allPins: [], allTags:[])
   
-  
-  
   //@Published var sampleUser:User = createDemoUser()
-  
   
   let appDelegate: AppDelegate = AppDelegate()
   
   func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tag: Array<Tag>, imagePath: String? = nil, date: Date) {
     
     let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tag: tag, date: date)
-       
       
-       
     self.sampleUser.allPins.append(newPin)
-    
-
-       }
+  }
+  
   func getPins()-> [MemoryPin]{
     return sampleUser.allPins
   }
     
-  }
+}
   
   
 
