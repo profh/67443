@@ -15,74 +15,75 @@ import MapKit
 import SwiftUI
 import Combine
 
-struct MapView: UIViewRepresentable {
+struct MapView: View {
   @ObservedObject var viewController: ViewController
   @EnvironmentObject var viewModel: ViewModel
   
-  func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
-    print("UPDATING UI VIEW")
-    print("SAMPLE USER PIN COUNT: \(viewModel.sampleUser.allPins.count)")
-    let user = viewController.currLocation
-    user.loadLocation()
-    
+//  func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+//    print("UPDATING UI VIEW")
+//    print("SAMPLE USER PIN COUNT: \(viewModel.sampleUser.allPins.count)")
+//    let user = viewController.currLocation
+//    user.loadLocation()
+//
     //uiView.showsUserLocation = true
     
     
-    let coordinate = CLLocationCoordinate2D(latitude: viewController.currLocation.latitude, longitude: viewController.currLocation.longitude)
+//    let coordinate = CLLocationCoordinate2D(latitude: viewController.currLocation.latitude, longitude: viewController.currLocation.longitude)
+//
+//
+//    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//    let region = MKCoordinateRegion(center: coordinate, span: span)
+//    uiView.setRegion(region, animated: true)
+//
+//    //need to flush all annotations at start of update UI view
+//    for memory in viewModel.sampleUser.allPins{
+//      print("MAKING PINS NOW")
+//      let droppedPin = MKPointAnnotation()
+//      droppedPin.coordinate = CLLocationCoordinate2D(
+//        latitude: memory.location.latitude ,
+//        longitude: memory.location.longitude
+//      )
+//      droppedPin.title = memory.title
+//      uiView.addAnnotation(droppedPin)
+//
+//    }
     
-    
-    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-    let region = MKCoordinateRegion(center: coordinate, span: span)
-    uiView.setRegion(region, animated: true)
-    
-    //need to flush all annotations at start of update UI view
-    for memory in viewModel.sampleUser.allPins{
-      print("MAKING PINS NOW")
-      let droppedPin = MKPointAnnotation()
-      droppedPin.coordinate = CLLocationCoordinate2D(
-        latitude: memory.location.latitude ,
-        longitude: memory.location.longitude
-      )
-      droppedPin.title = memory.title
-      uiView.addAnnotation(droppedPin)
-      
-    }
-    
-  }
+//  }
 
-  func makeUIView(context: Context) -> MKMapView {
-    print("MAKING VIEW")
-    
-    
-    let mapView = MKMapView(frame: .zero)
-    let user = viewController.currLocation
-    user.loadLocation()
-    
-    
-    for memory in viewModel.sampleUser.allPins{
-      let droppedPin = MKPointAnnotation()
-      droppedPin.coordinate = CLLocationCoordinate2D(
-        latitude: memory.location.latitude ,
-        longitude: memory.location.longitude
-      )
-      droppedPin.title = memory.title
-      mapView.addAnnotation(droppedPin)
-      
-    }
-    
-    return mapView
-  }
+//  func makeUIView(context: Context) -> MKMapView {
+//    print("MAKING VIEW")
+//
+//
+//    let mapView = MKMapView(frame: .zero)
+//    let user = viewController.currLocation
+//    user.loadLocation()
+//
+//
+//    for memory in viewModel.sampleUser.allPins{
+//      let droppedPin = MKPointAnnotation()
+//      droppedPin.coordinate = CLLocationCoordinate2D(
+//        latitude: memory.location.latitude ,
+//        longitude: memory.location.longitude
+//      )
+//      droppedPin.title = memory.title
+//      mapView.addAnnotation(droppedPin)
+//
+//    }
+//
+//    return mapView
+//  }
    
+  @State var coordinateRegion = MKCoordinateRegion(
+    center: CLLocationCoordinate2D(latitude: 40.442609, longitude: -79.946401),
+    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+  
+  var body: some View {
+    Map(coordinateRegion: $coordinateRegion, annotationItems: viewModel.sampleUser.allPins) { place in
+      MapMarker(coordinate: place.location.coordinates, tint: .green)
+    }.edgesIgnoringSafeArea(.all)
+  }
+  
 }
   
 
-//extension MapView {
-//  func willAppear(_ context: Context) {
-////    $viewModel.didChange.sink{
-////      print("location: \($0)")
-////    } //.store(in: &context.coordinator)
-//
-//    $viewModel.startUpdating
-//  }
-//}
 

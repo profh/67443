@@ -20,11 +20,13 @@ class Location: NSObject {
   
   var latitude: CLLocationDegrees
   var longitude: CLLocationDegrees
+  var coordinates: CLLocationCoordinate2D
   var locationManager = CLLocationManager()
   
   override init() {
     self.latitude = 40.442609
     self.longitude = -79.946401
+    self.coordinates = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     super.init()
   }
   

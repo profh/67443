@@ -63,11 +63,11 @@ struct BottomBar: View {
               Text("Map")
             }
       
-      Profile()
-           .tabItem {
-              Image(systemName: "person.fill")
-              Text("Profile")
-            }
+//      Profile()
+//           .tabItem {
+//              Image(systemName: "person.fill")
+//              Text("Profile")
+//            }
       
       
       

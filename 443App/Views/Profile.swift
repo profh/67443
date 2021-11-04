@@ -95,13 +95,13 @@ struct Profile: View {
 //  }
 //
   
-  @EnvironmentObject var viewModel: ViewModel
+//  @EnvironmentObject var viewModel: ViewModel
   
   var body: some View {
     
     Text("PROFILE")
     
-    print("SAMPLE USER PIN COUNT: \(viewModel.sampleUser.allPins.count)")
+//    print("SAMPLE USER PIN COUNT: \(viewModel.sampleUser.allPins.count)")
     
 //
 //    let skyBlue = Color(red: 0.4627, green: 0.8392, blue: 1.0)
