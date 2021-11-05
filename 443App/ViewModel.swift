@@ -11,14 +11,18 @@ import Photos
 import SwiftUI
 import UIKit
 import CoreData
+import Combine
 
 //WORKING ON MAKING FUNCTIONS TO SAVE PINS AND SH!T
 
 class ViewModel: ObservableObject {
   
-  @Published var sampleUser = User(name: "Larry Heimann", email: "larry@gmail.com", allPins: [], allTags:[])
+  @Published var sampleUser: User = User(name: "Larry Heimann", email: "lheimann@gmail.com", allPins: [], allTags:[]) {
+    willSet(allPins) {
+        objectWillChange.send()
+    }
+  }
   
-  //@Published var sampleUser:User = createDemoUser()
   
   let appDelegate: AppDelegate = AppDelegate()
   

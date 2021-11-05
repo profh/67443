@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 
 class User: ObservableObject, Identifiable {
@@ -17,7 +18,9 @@ class User: ObservableObject, Identifiable {
   var pinPercentNum: Int
   var mostPinsDate: Date
   @Published var allPins = [MemoryPin]()
+  // var allPins = [MemoryPin]()
   var allTags = [Tag]()
+  
   
   init(name: String , email: String, allPins : Array<MemoryPin>, allTags : Array<Tag>)
   {

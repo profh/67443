@@ -9,11 +9,11 @@ import SwiftUI
 struct PinView: View {
   
   @EnvironmentObject var viewModel: ViewModel
-  
+    
     var body: some View {
       NavigationView {
         VStack {
-          Text("VM Pin Count: \(viewModel.sampleUser.allPins.count)")
+          Text("VM Pin Count: \($viewModel.sampleUser.allPins.count)")
           Text("last pin lat: \(Double(viewModel.sampleUser.allPins.last?.location.latitude ?? 0.0))")
           Text("last pin lon: \(Double(viewModel.sampleUser.allPins.last?.location.longitude ?? 0.0))")
         }

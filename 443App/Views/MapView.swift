@@ -26,9 +26,9 @@ struct MapView: View {
   
   var body: some View {
     NavigationView {
-      Map(coordinateRegion: $coordinateRegion, annotationItems: viewModel.sampleUser.allPins) { place in
+      Map(coordinateRegion: $coordinateRegion, interactionModes: MapInteractionModes.all, annotationItems: viewModel.sampleUser.allPins) { place in
         // If you want larger ballons:
-        MapMarker(coordinate: place.location.coordinates, tint: .green)
+        MapMarker(coordinate: place.location.coordinates, tint: .blue)
         
         // If you want the traditional pin:
         // MapPin(coordinate: place.location.coordinates)
