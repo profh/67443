@@ -28,6 +28,8 @@ struct AddPin: View {
 
   var body: some View {
     VStack {
+      Text("VM Pin Count: \(viewModel.sampleUser.allPins.count)")
+      Text("VM User Name: \(viewModel.sampleUser.name)")
       HStack {
         Text("title:")
           .fontWeight(.bold)
@@ -101,8 +103,13 @@ struct AddPin: View {
     .navigationBarItems(trailing:
       Button(action:{
         let loc = Location()
-        loc.latitude = Double(latitude) ?? 0.0
-        loc.longitude = Double(longitude) ?? 0.0
+        let vlat = Double(Int.random(in: 1..<100))/100.0
+        let vlon = Double(Int.random(in: 1..<100))/100.0
+
+        loc.latitude = 40.452609 + vlat
+        loc.longitude = -79.946401 + vlon
+//        loc.latitude = Double(latitude) ?? 0.0
+//        loc.longitude = Double(longitude) ?? 0.0
         let tag = Tag(name: t, color: "Yellow")
         let tagArr: [Tag] = [tag]
         print("BEFORE SAVE COUNT:")
@@ -110,8 +117,9 @@ struct AddPin: View {
         self.viewModel.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tag: tagArr, date: d)
         print("AFTER SAVE COUNT:")
         print(viewModel.sampleUser.allPins.count)
-//      print(viewModel.sampleUser.allPins.last?.title)
-        
+        print(loc.latitude)
+        print(loc.longitude)
+      
         self.presentationMode.wrappedValue.dismiss()
         
       })

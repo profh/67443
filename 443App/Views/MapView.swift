@@ -17,70 +17,53 @@ import Combine
 
 struct MapView: View {
   @ObservedObject var viewController: ViewController
-  @EnvironmentObject var viewModel: ViewModel
+  @StateObject var viewModel: ViewModel
   
-//  func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
-//    print("UPDATING UI VIEW")
-//    print("SAMPLE USER PIN COUNT: \(viewModel.sampleUser.allPins.count)")
-//    let user = viewController.currLocation
-//    user.loadLocation()
-//
-    //uiView.showsUserLocation = true
-    
-    
-//    let coordinate = CLLocationCoordinate2D(latitude: viewController.currLocation.latitude, longitude: viewController.currLocation.longitude)
-//
-//
-//    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//    let region = MKCoordinateRegion(center: coordinate, span: span)
-//    uiView.setRegion(region, animated: true)
-//
-//    //need to flush all annotations at start of update UI view
-//    for memory in viewModel.sampleUser.allPins{
-//      print("MAKING PINS NOW")
-//      let droppedPin = MKPointAnnotation()
-//      droppedPin.coordinate = CLLocationCoordinate2D(
-//        latitude: memory.location.latitude ,
-//        longitude: memory.location.longitude
-//      )
-//      droppedPin.title = memory.title
-//      uiView.addAnnotation(droppedPin)
-//
-//    }
-    
-//  }
-
-//  func makeUIView(context: Context) -> MKMapView {
-//    print("MAKING VIEW")
-//
-//
-//    let mapView = MKMapView(frame: .zero)
-//    let user = viewController.currLocation
-//    user.loadLocation()
-//
-//
-//    for memory in viewModel.sampleUser.allPins{
-//      let droppedPin = MKPointAnnotation()
-//      droppedPin.coordinate = CLLocationCoordinate2D(
-//        latitude: memory.location.latitude ,
-//        longitude: memory.location.longitude
-//      )
-//      droppedPin.title = memory.title
-//      mapView.addAnnotation(droppedPin)
-//
-//    }
-//
-//    return mapView
-//  }
    
   @State var coordinateRegion = MKCoordinateRegion(
     center: CLLocationCoordinate2D(latitude: 40.442609, longitude: -79.946401),
-    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+    span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
   
   var body: some View {
-    Map(coordinateRegion: $coordinateRegion, annotationItems: viewModel.sampleUser.allPins) { place in
-      MapMarker(coordinate: place.location.coordinates, tint: .green)
-    }.edgesIgnoringSafeArea(.all)
+    NavigationView {
+      Map(coordinateRegion: $coordinateRegion, annotationItems: viewModel.sampleUser.allPins) { place in
+        // If you want larger ballons:
+        MapMarker(coordinate: place.location.coordinates, tint: .green)
+        
+        // If you want the traditional pin:
+        // MapPin(coordinate: place.location.coordinates)
+        
+        // If you want a circle to focus on the location:
+        // MapAnnotation(coordinate: place.location.coordinates) {
+        //   Circle()
+        //     .strokeBorder(Color.red, lineWidth: 4)
+        //     .frame(width: 40, height: 40)
+        // }
+
+      }
+      .edgesIgnoringSafeArea(.all)
+      .navigationBarItems(trailing: Button(action: {
+        let loc = Location()
+        let vlat = Double(Int.random(in: 1..<100))/100.0
+        let vlon = Double(Int.random(in: 1..<100))/100.0
+
+        loc.latitude = 40.452609 + vlat
+        loc.longitude = -79.946401 + vlon
+        print(loc.latitude)
+        print(loc.longitude)
+        let tag = Tag(name: "Fred", color: "Yellow")
+        let tagArr: [Tag] = [tag]
+        if #available(iOS 15, *) {
+          self.viewModel.savePin(title: "Fredness", description: "description", addressStreet: "street", addressCity: "city", addressState: "PA", addressZip: "15213", location: loc, tag: tagArr, date: Date.now)
+          print(viewModel.sampleUser.allPins.count)
+        } else {
+          // Fallback on earlier versions
+        }
+      }) {
+          Image(systemName: "plus")
+          Text("Add")
+      })
+    }
   }
   
 }

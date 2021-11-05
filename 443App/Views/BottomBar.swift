@@ -12,69 +12,32 @@ import SwiftUI
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
   var viewModel = ViewModel()
-  @ObservedObject var viewController: ViewController
+  @ObservedObject var viewController = ViewController()
+  
   
   var body: some View
   {
    
     TabView {
-      NavigationView {
-//        List {
-//          ForEach(viewModel.sampleUser.allPins)
-//          { pin in
-//            NavigationLink(destination: PinDetail(pin: pin))
-//            {
-//              PinRow(pin: pin)
-//            }
-//          }
-//        }
-//        .navigationBarTitle("Pins")
-//        .navigationBarItems(trailing:
-//          NavigationLink(destination: AddPin()) {
-//              Image(systemName: "plus")
-//          }
-//        )
-      }
+      PinView(viewModel: viewModel)
       .tabItem {
         Image(systemName: "pin.fill")
         Text("Pins")
       }
       
+      MapPinsView(viewModel: viewModel, viewController: viewController)
+      .tabItem {
+        Image(systemName: "map.fill")
+        Text("Map")
+      }
       
-      NavigationView {
-        ZStack {
-          MapView(viewController: viewController)
-          NavigationLink(destination: AddPin()) {
-              Text("Create")
-          }
-          .offset(y: 275)
-
-          }
-        .navigationBarTitle("Back")
-        .navigationBarHidden(self.isNavigationBarHidden)
-        .onAppear {
-            self.isNavigationBarHidden = true
-        }
-        }
-      
-      
-           .tabItem {
-              Image(systemName: "map.fill")
-              Text("Map")
-            }
-      
-//      Profile()
-//           .tabItem {
-//              Image(systemName: "person.fill")
-//              Text("Profile")
-//            }
-      
-      
-      
+      Profile(viewModel: viewModel)
+      .tabItem {
+        Image(systemName: "person.fill")
+        Text("Profile")
+      }
     }
-    .environmentObject(viewModel)
-    
-    
+//    .environmentObject(viewModel)
     
   }
 }

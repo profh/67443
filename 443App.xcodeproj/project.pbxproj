@@ -28,6 +28,8 @@
 		E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CD92730D6EF001936AE /* AddPin.swift */; };
 		E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDC64B2732C1BC00460D27 /* PinRow.swift */; };
 		E5FDC6512732C1E800460D27 /* PinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDC6502732C1E800460D27 /* PinDetail.swift */; };
+		E71985442734C68500629B73 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71985432734C68500629B73 /* PinView.swift */; };
+		E71985462734C75900629B73 /* MapPinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71985452734C75900629B73 /* MapPinsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		E5CB3CD92730D6EF001936AE /* AddPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPin.swift; sourceTree = "<group>"; };
 		E5FDC64B2732C1BC00460D27 /* PinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRow.swift; sourceTree = "<group>"; };
 		E5FDC6502732C1E800460D27 /* PinDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDetail.swift; sourceTree = "<group>"; };
+		E71985432734C68500629B73 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		E71985452734C75900629B73 /* MapPinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,8 @@
 				E5FDC6502732C1E800460D27 /* PinDetail.swift */,
 				E5FDC64B2732C1BC00460D27 /* PinRow.swift */,
 				4A79D7202730D4F900C673CE /* Profile.swift */,
+				E71985432734C68500629B73 /* PinView.swift */,
+				E71985452734C75900629B73 /* MapPinsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				E5FDC6512732C1E800460D27 /* PinDetail.swift in Sources */,
 				4A4512AE272B252E0092899D /* BottomBar.swift in Sources */,
 				E5AA64B62720E0AB00D3C4A8 /* MapView.swift in Sources */,
+				E71985462734C75900629B73 /* MapPinsView.swift in Sources */,
 				E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */,
 				E5CB3CBF272C568B001936AE /* Tag.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
@@ -338,6 +345,7 @@
 				A9688072272C767300F0C51A /* User.swift in Sources */,
 				E5AA64BB2720E0D500D3C4A8 /* ViewController.swift in Sources */,
 				E5AA6464271F4EFC00D3C4A8 /* _43App.xcdatamodeld in Sources */,
+				E71985442734C68500629B73 /* PinView.swift in Sources */,
 				E5AA6461271F4EFC00D3C4A8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

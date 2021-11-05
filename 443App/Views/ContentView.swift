@@ -10,14 +10,14 @@ import SwiftUI
 struct ContentView: View {
   
 //  @StateObject var viewModel = ViewModel()
-  @ObservedObject var viewController = ViewController()
+  
   
   @State private var showingAlert = false
   
   var body: some View {
 
 //    BottomBar(viewModel: viewModel, viewController: viewController)
-    BottomBar(viewController: viewController)
+    BottomBar()
   }
 }
 
