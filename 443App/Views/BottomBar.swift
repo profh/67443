@@ -19,25 +19,25 @@ struct BottomBar: View {
   {
    
     TabView {
-      PinView(viewModel: viewModel)
+      PinView()
       .tabItem {
         Image(systemName: "pin.fill")
         Text("Pins")
       }
       
-      MapPinsView(viewModel: viewModel, viewController: viewController)
+      MapPinsView(viewController: viewController)
       .tabItem {
         Image(systemName: "map.fill")
         Text("Map")
       }
       
-      Profile(viewModel: viewModel)
+      Profile()
       .tabItem {
         Image(systemName: "person.fill")
         Text("Profile")
       }
     }
-//    .environmentObject(viewModel)
+    .environmentObject(viewModel)
     
   }
 }

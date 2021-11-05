@@ -8,7 +8,7 @@ import SwiftUI
 
 struct PinView: View {
   
-  @StateObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
     var body: some View {
       NavigationView {

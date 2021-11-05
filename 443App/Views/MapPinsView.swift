@@ -8,13 +8,13 @@ import SwiftUI
 
 struct MapPinsView: View {
   
-  @StateObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   @ObservedObject var viewController: ViewController
   
   var body: some View {
     NavigationView {
       ZStack {
-        MapView(viewController: viewController, viewModel: viewModel)
+        MapView(viewController: viewController)
         VStack {
           Text("VM Pin Count: \(viewModel.sampleUser.allPins.count)")
           Text("last pin lat: \(Double(viewModel.sampleUser.allPins.last?.location.latitude ?? 0.0))")

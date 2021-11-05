@@ -10,7 +10,7 @@ import SwiftUI
  
 struct Profile: View {
   
-  @StateObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
   var body: some View {
     

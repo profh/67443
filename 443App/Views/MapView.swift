@@ -17,7 +17,7 @@ import Combine
 
 struct MapView: View {
   @ObservedObject var viewController: ViewController
-  @StateObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
    
   @State var coordinateRegion = MKCoordinateRegion(
