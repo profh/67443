@@ -19,8 +19,8 @@ struct PinView: View {
         }
         .navigationBarItems(trailing: Button(action: {
           let loc = Location()
-          let vlat = Double(Int.random(in: 1..<100))/100.0
-          let vlon = Double(Int.random(in: 1..<100))/100.0
+          let vlat = Double(Int.random(in: 1..<100))/500.0
+          let vlon = Double(Int.random(in: 1..<100))/500.0
 
           loc.latitude = 40.452609 + vlat
           loc.longitude = -79.946401 + vlon
