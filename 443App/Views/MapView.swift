@@ -27,8 +27,8 @@ struct MapView: View {
   
   
   @State var coordinateRegion = MKCoordinateRegion(
-    center: CLLocationCoordinate2D(latitude: 40.452609, longitude: -79.946401),
-    span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
+    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
   
   var body: some View {
     NavigationView {

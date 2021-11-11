@@ -31,11 +31,11 @@ class UserPins: ObservableObject {
   
   // This method is just for demo purposes; has no use in production
   func setRandomPin() {
-    let vlat = Double(Int.random(in: 1..<100))/500.0
-    let vlon = Double(Int.random(in: 1..<100))/500.0
+    let vlat = Double(Int.random(in: 1..<100))/1500.0
+    let vlon = Double(Int.random(in: 1..<100))/1500.0
 
-    let tempLatitude = 40.452609 + vlat
-    let tempLongitude = -79.946401 + vlon
+    let tempLatitude = 40.444176 + vlat
+    let tempLongitude = -79.945551 + vlon
     
     let location = Location(latitude: tempLatitude, longitude: tempLongitude)
     print(location.latitude)

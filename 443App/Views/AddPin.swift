@@ -20,7 +20,7 @@ struct AddPin: View {
   @State var city: String = "F"
   @State var state: String = "F"
   @State var zip: String = "F"
-  @State var location = Location(latitude: 40.442609, longitude: -79.946401)
+  @State var location = Location(latitude: 40.442609, longitude: -79.945651)
   @State var longitude: String = "-79.946401" ;
   @State var latitude: String = "40.442609" ;
   @State var t = "Happy";
