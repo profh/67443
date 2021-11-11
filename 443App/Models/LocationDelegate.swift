@@ -12,7 +12,7 @@ import CoreLocation
 
 class LocationDelegate: NSObject, ObservableObject, CLLocationManagerDelegate         {
 
-   @Published var  region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 13.086, longitude: 80.2769), latitudinalMeters: 10000, longitudinalMeters: 10000)
+   @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.442609, longitude: -79.946401), latitudinalMeters: 10000, longitudinalMeters: 10000)
 
    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
        if manager.authorizationStatus == .authorizedWhenInUse {

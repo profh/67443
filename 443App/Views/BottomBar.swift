@@ -11,8 +11,8 @@ import SwiftUI
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
-  var viewModel = ViewModel()
-  @ObservedObject var viewController = ViewController()
+  
+  var userPins = UserPins(forUser: User(name: "Prof. H", email: "profh@cmu.edu"))
   
   
   var body: some View
@@ -25,7 +25,7 @@ struct BottomBar: View {
         Text("Pins")
       }
       
-      MapPinsView(viewController: viewController)
+      MapPinsView()
       .tabItem {
         Image(systemName: "map.fill")
         Text("Map")
@@ -37,7 +37,7 @@ struct BottomBar: View {
         Text("Profile")
       }
     }
-    .environmentObject(viewModel)
+    .environmentObject(userPins)
     
   }
 }

@@ -7,13 +7,15 @@
 import SwiftUI
 
 struct PinCountWidget: View {
+  
+  @EnvironmentObject var userPins: UserPins
+  
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+      VStack {
+        Text("VM Pin Count: \(userPins.allPins.count)")
+        Text("last pin lat: \(Double(userPins.allPins.last?.location.latitude ?? 0.0))")
+        Text("last pin lon: \(Double(userPins.allPins.last?.location.longitude ?? 0.0))")
+      }
     }
 }
 
-struct PinCountWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        PinCountWidget()
-    }
-}

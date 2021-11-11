@@ -16,49 +16,48 @@ import SwiftUI
 import Combine
 
 struct MapView: View {
-  @ObservedObject var viewController: ViewController
-  @EnvironmentObject var viewModel: ViewModel
+
+  // Data for user pins
+  @EnvironmentObject var userPins: UserPins
+
+  // Used for tracking current location
+  @State var trackingMode: MapUserTrackingMode = .follow
+  @State var manager = CLLocationManager()
+  @StateObject var managerDelegate = LocationDelegate()
   
-   
+  
   @State var coordinateRegion = MKCoordinateRegion(
-    center: CLLocationCoordinate2D(latitude: 40.442609, longitude: -79.946401),
-    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.02))
+    center: CLLocationCoordinate2D(latitude: 40.452609, longitude: -79.946401),
+    span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
   
   var body: some View {
     NavigationView {
-      Map(coordinateRegion: $coordinateRegion, interactionModes: MapInteractionModes.all, annotationItems: viewModel.sampleUser.allPins) { place in
-        // If you want larger ballons:
+      Map(coordinateRegion: $coordinateRegion,
+          interactionModes: MapInteractionModes.all,
+          showsUserLocation: true,
+          userTrackingMode: $trackingMode,
+          annotationItems: userPins.allPins) { place in
+        
+        // • If you want larger ballons:
         MapMarker(coordinate: place.location.coordinates, tint: .blue)
         
-        // If you want the traditional pin:
+        // • If you want the traditional pin:
         // MapPin(coordinate: place.location.coordinates)
         
-        // If you want a circle to focus on the location:
+        // • If you want a circle to focus on the location:
         // MapAnnotation(coordinate: place.location.coordinates) {
         //   Circle()
-        //     .strokeBorder(Color.red, lineWidth: 4)
-        //     .frame(width: 40, height: 40)
+        //     .strokeBorder(Color.orange, lineWidth: 4)
+        //     .frame(width: 30, height: 30)
         // }
 
       }
+      .onAppear {
+        manager.delegate = managerDelegate
+      }
       .edgesIgnoringSafeArea(.all)
       .navigationBarItems(trailing: Button(action: {
-        let loc = Location()
-        let vlat = Double(Int.random(in: 1..<100))/100.0
-        let vlon = Double(Int.random(in: 1..<100))/100.0
-
-        loc.latitude = 40.452609 + vlat
-        loc.longitude = -79.946401 + vlon
-        print(loc.latitude)
-        print(loc.longitude)
-        let tag = Tag(name: "Fred", color: "Yellow")
-        let tagArr: [Tag] = [tag]
-        if #available(iOS 15, *) {
-          self.viewModel.savePin(title: "Fredness", description: "description", addressStreet: "street", addressCity: "city", addressState: "PA", addressZip: "15213", location: loc, tag: tagArr, date: Date.now)
-          print(viewModel.sampleUser.allPins.count)
-        } else {
-          // Fallback on earlier versions
-        }
+        userPins.setRandomPin()
       }) {
           Image(systemName: "plus")
           Text("Add")

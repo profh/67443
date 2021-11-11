@@ -22,25 +22,26 @@ class UserPins: ObservableObject {
     let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tags: [], date: date)
     
     self.allPins.append(newPin)
-    // print("Pin count now \(self.allPins.count)")
+     print("Pin count now \(self.allPins.count)")
   }
   
   func getPins()-> [MemoryPin]{
     return allPins
   }
   
-  // Just for demo purposes; has no use in production
+  // This method is just for demo purposes; has no use in production
   func setRandomPin() {
-    let loc = Location()
     let vlat = Double(Int.random(in: 1..<100))/500.0
     let vlon = Double(Int.random(in: 1..<100))/500.0
 
-    loc.latitude = 40.452609 + vlat
-    loc.longitude = -79.946401 + vlon
-    print(loc.latitude)
-    print(loc.longitude)
-    let tag = Tag(name: "Fred", color: "Yellow")
+    let tempLatitude = 40.452609 + vlat
+    let tempLongitude = -79.946401 + vlon
+    
+    let location = Location(latitude: tempLatitude, longitude: tempLongitude)
+    print(location.latitude)
+    print(location.longitude)
+    let tag = Tag(name: "Fred", color: "Green")
     let tagArr: [Tag] = [tag]
-    self.savePin(title: "Fredness", description: "description", addressStreet: "street", addressCity: "city", addressState: "PA", addressZip: "15213", location: loc, tags: tagArr, date: Date())
+    self.savePin(title: "Fredness", description: "description", addressStreet: "street", addressCity: "city", addressState: "PA", addressZip: "15213", location: location, tags: tagArr, date: Date())
   }
 }

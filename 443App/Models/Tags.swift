@@ -5,3 +5,14 @@
 //
 
 import Foundation
+
+class Tags: ObservableObject {
+  
+  var user: User
+  @Published var allTags = [Tag]()
+  
+  init(user: User , allTags: Array<Tag> = []) {
+    self.user = user
+    self.allTags = allTags
+  }
+}

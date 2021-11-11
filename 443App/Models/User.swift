@@ -13,26 +13,21 @@ class User: ObservableObject, Identifiable {
   
   var name: String
   var email: String
-  var totalPins: Int
-  var locationPinNum: Int
-  var pinPercentNum: Int
-  var mostPinsDate: Date
-  @Published var allPins = [MemoryPin]()
-  // var allPins = [MemoryPin]()
-  var allTags = [Tag]()
+//  var totalPins: Int
+//  var locationPinNum: Int
+//  var pinPercentNum: Int
+//  var mostPinsDate: Date
+//  @Published var allPins = [MemoryPin]()
   
   
-  init(name: String , email: String, allPins : Array<MemoryPin>, allTags : Array<Tag>)
-  {
+  init(name: String , email: String) {
     self.name = name
     self.email = email
-    self.allPins = allPins
-    self.allTags  = allTags
-    self.totalPins  = allPins.count
-    self.locationPinNum = 0
-    self.pinPercentNum = 0
-    self.mostPinsDate = NSDate() as Date
-    
+//    self.allPins = allPins
+//    self.totalPins  = allPins.count
+//    self.locationPinNum = 0
+//    self.pinPercentNum = 0
+//    self.mostPinsDate = NSDate() as Date
   }
   
 }

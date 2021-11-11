@@ -9,19 +9,19 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  let location = Location()
+//  let location = Location()
   
   func didDiscardSceneSessions(){
-    location.loadLocation()
-    location.saveLocation()
+//    location.loadLocation()
+//    location.saveLocation()
   }
   
   func didFinishLaunchingWithOptions(){
-    location.loadLocation()
+//    location.loadLocation()
   }
   
   func configurationForConnecting(){
-    location.loadLocation()
+//    location.loadLocation()
   }
 
 
