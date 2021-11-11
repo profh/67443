@@ -87,5 +87,5 @@ fastlane/test_output
 
 # The pbxproj file
 443App.xcodeproj/project.pbxproj
-
+*.pbxproj
 
